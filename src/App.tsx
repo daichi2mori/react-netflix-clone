@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.scss";
+import { Nav } from "./components/Nav";
+import { Banner } from "./components/Banner";
+import { Row } from "./components/Row";
+import { requests } from "./request"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <Nav />
+      <Banner />
+      <Row title="NETFLIX ORIGUINALS" fetchUrl={requests.feachNetflixOriginals} isLargeRow />
+      <Row title="Top Rated" fetchUrl={requests.feactTopRated} />
+      <Row title="Action Movies" fetchUrl={requests.feactActionMovies} />
+      <Row title="Comedy Movies" fetchUrl={requests.feactComedyMovies} />
+      <Row title="Horror Movies" fetchUrl={requests.feactHorrorMovies} />
+      <Row title="Romance Movies" fetchUrl={requests.feactRomanceMovies} />
+      <Row title="DOcumentaries" fetchUrl={requests.feactDocumentMovies} />
+    </div>
+  );
 }
 
-export default App
+export default App;
